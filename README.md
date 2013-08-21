@@ -36,9 +36,9 @@ Into this:
 
 ### Parameters
 
-`markdown`
+`markdown`  
 : Set to `false` to disable Markdown Extra (default is `true`). Usage: `{{ content | smartdown(markdown=false) }}`.
 
-`smartypants`
+`smartypants`  
 : Set to `false` to disable Smartypants (default is `true`). Usage: `{{ content | smartdown(smartypants=false) }}`.
 
