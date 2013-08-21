@@ -10,10 +10,11 @@ Craft already supports standard Markdown, but sadly standard Markdown doesn't su
 SmartDown plugs both of these gaps, turning your website into a typographic dreamboat.
 
 ## Installation
-1. Download and unzip SmartDown.
+1. [Download][download] and unzip SmartDown.
 2. Copy the `smartdown` folder to your `craft/plugins/` directory.
 3. Navigate to the "[Craft Admin &rarr; Settings &rarr; Plugins][plugins]" page, and activate SmartDown.
 
+[download]: https://github.com/experience/smartdown.craft-plugin/archive/master.zip
 [plugins]: http://docs.buildwithcraft.com/cp/settings/plugins.html
 
 ## Usage
