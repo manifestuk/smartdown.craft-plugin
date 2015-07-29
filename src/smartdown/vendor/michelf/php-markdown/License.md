@@ -1,27 +1,27 @@
-PHP SmartyPants  
-Copyright (c) 2005-2013 Michel Fortin  
-<http://michelf.ca/>  
+PHP Markdown Lib  
+Copyright (c) 2004-2015 Michel Fortin  
+<https://michelf.ca/>  
 All rights reserved.
 
-Original SmartyPants  
-Copyright (c) 2003-2004 John Gruber  
-<http://daringfireball.net/>  
+Based on Markdown  
+Copyright (c) 2003-2006 John Gruber   
+<http://daringfireball.net/>   
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
 
-*   Redistributions of source code must retain the above copyright notice,
-    this list of conditions and the following disclaimer.
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
 
-*   Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
+* Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
 
-*   Neither the name "SmartyPants" nor the names of its contributors may
-    be used to endorse or promote products derived from this software
-    without specific prior written permission.
+* Neither the name "Markdown" nor the names of its contributors may
+  be used to endorse or promote products derived from this software
+  without specific prior written permission.
 
 This software is provided by the copyright holders and contributors "as
 is" and any express or implied warranties, including, but not limited
