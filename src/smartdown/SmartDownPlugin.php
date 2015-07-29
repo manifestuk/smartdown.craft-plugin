@@ -1,26 +1,32 @@
-<?php
-namespace Craft;
-
-/**
- * SmartDown Craft Twig filter.
- *
- * @author  Stephen Lewis <https://github.com/experience>
- * @package SmartDown
- * @version 0.1.0
- */
+<?php namespace Craft;
 
 class SmartDownPlugin extends BasePlugin
 {
     /**
-    * Returns the plugin name.
-    *
-    * @return string
-    */
+     * Initialises the plugin.
+     */
+    public function init()
+    {
+        $this->initializeAutoloader();
+    }
+
+    /**
+     * Requires the Composer-generated autoloader.
+     */
+    private function initializeAutoloader()
+    {
+        require_once __DIR__ . '/vendor/autoload.php';
+    }
+
+    /**
+     * Returns the plugin name.
+     *
+     * @return string
+     */
     public function getName()
     {
         return 'SmartDown';
     }
-
 
     /**
      * Returns the plugin version.
@@ -32,7 +38,6 @@ class SmartDownPlugin extends BasePlugin
         return '0.1.0';
     }
 
-
     /**
      * Returns the name of the plugin developer.
      *
@@ -40,9 +45,8 @@ class SmartDownPlugin extends BasePlugin
      */
     public function getDeveloper()
     {
-        return 'Stephen Lewis';
+        return 'Experience';
     }
-
 
     /**
      * Returns the preferred URL of the plugin developer.
@@ -51,9 +55,8 @@ class SmartDownPlugin extends BasePlugin
      */
     public function getDeveloperUrl()
     {
-        return 'https://github.com/experience';
+        return 'https://experiencehq.net';
     }
-
 
     /**
      * Registers the Twig extension.
@@ -63,7 +66,7 @@ class SmartDownPlugin extends BasePlugin
     public function addTwigExtension()
     {
         Craft::import('plugins.smartdown.twigextensions.SmartDownTwigExtension');
+
         return new SmartDownTwigExtension();
     }
 }
-
