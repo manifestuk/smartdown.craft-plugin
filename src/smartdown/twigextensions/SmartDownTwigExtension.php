@@ -79,8 +79,8 @@ class SmartDownTwigExtension extends Twig_Extension
         $markdown,
         $smartypants
     ) {
-        $keyFormat = 'smartdown(%1=false)';
-        $messageFormat = 'smartdown(%1=false) has been deprecated. Use smartdown(%2=false) instead.';
+        $keyFormat = 'smartdown(%s=false)';
+        $messageFormat = 'smartdown(%s=false) has been deprecated. Use smartdown(%s=false) instead.';
 
         if ($markdown === false) {
             craft()->deprecator->log(
