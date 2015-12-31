@@ -4,10 +4,12 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] ##
 ### Added ###
-- Added change log.
+- Add change log.
+- Add unit tests for all "utility" classes.
 
 ### Changed ###
-- Renamed "SmartDown" to "Smartdown" (breaking change).
+- Rename "SmartDown" to "Smartdown" (breaking change).
+- Remove previously-deprecated `markdown` and `smartypants` Twig filter options.
 
 ### Fixed ###
 

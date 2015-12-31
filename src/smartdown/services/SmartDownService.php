@@ -1,7 +1,5 @@
 <?php namespace Craft;
 
-use Smartdown\Utils\Parser;
-
 class SmartdownService extends BaseApplicationComponent
 {
     protected $parser;
@@ -11,7 +9,7 @@ class SmartdownService extends BaseApplicationComponent
      */
     public function __construct()
     {
-        $this->parser = new Parser();
+        $this->parser = smartdown()->parser;
     }
 
     /**

@@ -13,7 +13,7 @@ class SmartdownTwigExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'SmartDown';
+        return 'Smartdown';
     }
 
     /**
@@ -23,12 +23,7 @@ class SmartdownTwigExtension extends Twig_Extension
      */
     public function getFilters()
     {
-        $options = [
-            'markup'      => true,
-            'typography'  => true,
-            'markdown'    => true,      // Deprecated.
-            'smartypants' => true,      // Deprecated.
-        ];
+        $options = ['markup' => true, 'typography' => true];
 
         return [
             'smartdown' => new Twig_SimpleFilter(
@@ -46,55 +41,18 @@ class SmartdownTwigExtension extends Twig_Extension
      * @param string $source      The string to parse.
      * @param bool   $markup      Run the string through the markup filter?
      * @param bool   $typography  Run the string through the typography filter?
-     * @param bool   $markdown    Equivalent of `$markup`. Deprecated.
-     * @param bool   $smartypants Equivalent of `$typography`. Deprecated.
      *
      * @return string
      */
-    public function smartdownFilter(
-        $source,
-        $markup = true,
-        $typography = true,
-        $markdown = true,
-        $smartypants = true
-    ) {
-        $this->logUseOfDeprecatedOptions($markdown, $smartypants);
-
-        $markup = ($markup !== false && $markdown !== false);
-        $typography = ($typography !== false && $smartypants !== false);
+    public function smartdownFilter($source, $markup = true, $typography = true)
+    {
+        $markup = ($markup !== false);
+        $typography = ($typography !== false);
 
         return new Twig_Markup(
             $this->parseInput($source, $markup, $typography),
             $this->getTwigCharset()
         );
-    }
-
-    /**
-     * Logs usage of deprecated filter options.
-     *
-     * @param bool $markdown    The 'markdown' option passed to the filter.
-     * @param bool $smartypants The 'smartypants' option passed to the filter.
-     */
-    protected function logUseOfDeprecatedOptions(
-        $markdown,
-        $smartypants
-    ) {
-        $keyFormat = 'smartdown(%s=false)';
-        $messageFormat = 'smartdown(%s=false) has been deprecated. Use smartdown(%s=false) instead.';
-
-        if ($markdown === false) {
-            craft()->deprecator->log(
-                sprintf($keyFormat, 'markdown'),
-                sprintf($messageFormat, 'markdown', 'markup')
-            );
-        }
-
-        if ($smartypants === false) {
-            craft()->deprecator->log(
-                sprintf($keyFormat, 'smartypants'),
-                sprintf($messageFormat, 'smartypants', 'typography')
-            );
-        }
     }
 
     /**
@@ -131,4 +89,3 @@ class SmartdownTwigExtension extends Twig_Extension
         return craft()->templates->getTwig()->getCharset();
     }
 }
-

@@ -1,12 +1,49 @@
 <?php namespace Smartdown\Utils;
 
-use Craft\LogLevel;
-use Craft\SmartdownPlugin;
-use Michelf\MarkdownExtra;
-use Michelf\SmartyPants;
-
 class Parser
 {
+    protected static $instance;
+    protected $logger;
+    protected $plugins;
+    protected $markup;
+    protected $typography;
+
+    /**
+     * Parser constructor.
+     *
+     * @param \Michelf\MarkdownExtra $markup
+     * @param \michelf\SmartyPants   $typography
+     * @param \Craft\PluginsService  $plugins
+     * @param Logger                 $logger
+     */
+    public function __construct($markup, $typography, $plugins, $logger)
+    {
+        $this->markup = $markup;
+        $this->typography = $typography;
+        $this->plugins = $plugins;
+        $this->logger = $logger;
+    }
+
+    /**
+     * Returns an instance of the Parser class.
+     *
+     * @param \Michelf\MarkdownExtra $markup
+     * @param \michelf\SmartyPants   $typography
+     * @param \Craft\PluginsService  $plugins
+     * @param Logger                 $logger
+     *
+     * @return static
+     */
+    public static function getInstance($markup, $typography, $plugins, $logger)
+    {
+        if (! static::$instance) {
+            static::$instance = new static(
+                $markup, $typography, $plugins, $logger);
+        }
+
+        return static::$instance;
+    }
+
     /**
      * Runs the given string through all of the available parsers.
      *
@@ -17,11 +54,7 @@ class Parser
     public function parseAll($source)
     {
         if (! is_string($source)) {
-            SmartdownPlugin::log(
-                Craft::t('SmartDown can only parse strings, fool'),
-                LogLevel::Warning
-            );
-
+            $this->logger->logError('Smartdown::parseAll expects a string.');
             return '';
         }
 
@@ -37,9 +70,14 @@ class Parser
      */
     public function parseTypography($source)
     {
-        $source = $this->callHook('modifySmartDownTypographyInput', $source);
-        $source = SmartyPants::defaultTransform($source);
-        $source = $this->callHook('modifySmartDownTypographyOutput', $source);
+        if (! is_string($source)) {
+            $this->logger->logError('Smartdown::parseTypography expects a string.');
+            return '';
+        }
+
+        $source = $this->callHook('modifySmartdownTypographyInput', $source);
+        $source = $this->typography->transform($source);
+        $source = $this->callHook('modifySmartdownTypographyOutput', $source);
 
         return $source;
     }
@@ -53,9 +91,14 @@ class Parser
      */
     public function parseMarkup($source)
     {
-        $source = $this->callHook('modifySmartDownMarkupInput', $source);
-        $source = MarkdownExtra::defaultTransform($source);
-        $source = $this->callHook('modifySmartDownMarkupOutput', $source);
+        if (! is_string($source)) {
+            $this->logger->logError('Smartdown::parseMarkup expects a string.');
+            return '';
+        }
+
+        $source = $this->callHook('modifySmartdownMarkupInput', $source);
+        $source = $this->markup->transform($source);
+        $source = $this->callHook('modifySmartdownMarkupOutput', $source);
 
         return $source;
     }
@@ -81,7 +124,7 @@ class Parser
     {
         $result = $source;
 
-        foreach (\Craft\craft()->plugins->getPlugins() as $plugin) {
+        foreach ($this->plugins->getPlugins() as $plugin) {
             if (method_exists($plugin, $hook)) {
                 $result = $plugin->$hook($source);
             }

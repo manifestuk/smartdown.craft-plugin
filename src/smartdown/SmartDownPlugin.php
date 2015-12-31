@@ -1,5 +1,10 @@
 <?php namespace Craft;
 
+use Michelf\MarkdownExtra;
+use Michelf\SmartyPants;
+use Smartdown\Utils\Logger;
+use Smartdown\Utils\Parser;
+
 class SmartdownPlugin extends BasePlugin
 {
     /**
@@ -34,22 +39,49 @@ class SmartdownPlugin extends BasePlugin
      */
     private function populateServiceProvider()
     {
-        // Returns an instance of the Craft application.
+        $this->stashApplication();
+        $this->stashTranslator();
+        $this->stashUtilities();
+    }
+
+    /**
+     * Stashes a reference to the Craft application in the service locator.
+     */
+    private function stashApplication()
+    {
         smartdown()->stash('app', function () {
             return Craft::app();
         });
+    }
 
-        // Wrapper for the Craft::t static method.
-        smartdown()->stash('translate', function ($message, array $variables = []) {
-            return call_user_func_array(
-                ['\Craft\Craft', 't'],
-                func_get_args()
+    /**
+     * Stashes a "translate" helper in the service locator.
+     */
+    private function stashTranslator()
+    {
+        smartdown()->stash('translate',
+            function ($message, array $variables = []) {
+                return call_user_func_array(
+                    ['\Craft\Craft', 't'],
+                    func_get_args()
+                );
+            }
+        );
+    }
+
+    /**
+     * Stashes the plugin "utility" classes in the service locator.
+     */
+    private function stashUtilities()
+    {
+        // Stashes an instance of the Parser class in the service locator.
+        smartdown()->stash('parser', function () {
+            return Parser::getInstance(
+                new MarkdownExtra(),
+                new SmartyPants(),
+                smartdown()->app->plugins,
+                new Logger()
             );
-        });
-
-        // Writes the given error message to the plugin log file.
-        smartdown()->stash('logError', function ($message) {
-            SmartdownPlugin::log($message, LogLevel::Error);
         });
     }
 
