@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "classmap": ["mocks/"],
+    "psr-4": {
+      "Smartdown\\Tests\\": "./",
+      "Smartdown\\Utils\\": "../smartdown/utils/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "mockery/mockery": "^0.9.4"
+  }
+}

@@ -1,0 +1,24 @@
+<phpunit bootstrap="vendor/autoload.php" colors="auto">
+    <testsuites>
+        <testsuite name="smartdown">
+            <directory>utils</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../smartdown/utils</directory>
+            <exclude>
+                <file>../smartdown/utils/ServiceLocator.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="./coverage/html-log" />
+        <log type="coverage-text" target="./coverage/text-log.txt" />
+        <log type="json" target="./coverage/json-log.json" />
+        <log type="tap" target="./coverage/tap-log.tap" />
+        <log type="junit" target="./coverage/junit-log.xml" />
+        <log type="testdox-html" target="./coverage/testdox-log.html" />
+        <log type="testdox-text" target="./coverage/testdox-log.txt" />
+    </logging>
+</phpunit>
