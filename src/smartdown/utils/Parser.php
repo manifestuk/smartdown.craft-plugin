@@ -1,7 +1,7 @@
-<?php namespace Experience\SmartDown\Utilities;
+<?php namespace Smartdown\Utils;
 
 use Craft\LogLevel;
-use Craft\SmartDownPlugin;
+use Craft\SmartdownPlugin;
 use Michelf\MarkdownExtra;
 use Michelf\SmartyPants;
 
@@ -17,7 +17,7 @@ class Parser
     public function parseAll($source)
     {
         if (! is_string($source)) {
-            SmartDownPlugin::log(
+            SmartdownPlugin::log(
                 Craft::t('SmartDown can only parse strings, fool'),
                 LogLevel::Warning
             );

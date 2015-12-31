@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Experience\\SmartDown\\Utilities\\' => array($baseDir . '/utilities'),
+    'Smartdown\\Utils\\' => array($baseDir . '/utils'),
 );

@@ -1,12 +1,15 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Experience\\SmartDown\\Utilities\\": "utilities/"
-        }
-    },
-    "minimum-stability": "stable",
-    "require": {
-        "michelf/php-markdown": "~1.5",
-        "michelf/php-smartypants": "~1.6@dev"
+  "autoload": {
+    "classmap": [
+      "twigextensions/"
+    ],
+    "psr-4": {
+      "Smartdown\\Utils\\": "utils/"
     }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "michelf/php-markdown": "~1.6",
+    "michelf/php-smartypants": "~1.6@beta"
+  }
 }
