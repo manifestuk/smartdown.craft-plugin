@@ -4,7 +4,7 @@ use Twig_Extension;
 use Twig_Markup;
 use Twig_SimpleFilter;
 
-class SmartDownTwigExtension extends Twig_Extension
+class SmartdownTwigExtension extends Twig_Extension
 {
     /**
      * Returns the Twig extension name.
@@ -111,11 +111,11 @@ class SmartDownTwigExtension extends Twig_Extension
         $result = $source;
 
         if ($markup) {
-            $result = craft()->smartDown->parseMarkup($result);
+            $result = craft()->smartdown->parseMarkup($result);
         }
 
         if ($typography) {
-            $result = craft()->smartDown->parseTypography($result);
+            $result = craft()->smartdown->parseTypography($result);
         }
 
         return $result;
