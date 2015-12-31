@@ -4,23 +4,38 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] ##
 ### Added ###
-- Add change log.
-- Add unit tests for all "utility" classes.
+- Added change log.
+- Added unit tests for all "utility" classes.
 
 ### Changed ###
-- Rename "SmartDown" to "Smartdown" (breaking change).
-- Remove previously-deprecated `markdown` and `smartypants` Twig filter options.
+- Renamed the plugin from SmartDown to Smartdown.
+- Renamed `SmartDownService` to `SmartdownService` (breaking change).
+- Removed previously-deprecated `markdown` and `smartypants` Twig filter options.
+- Updated `michelf/php-markdown` dependency to version 1.6.
+- Updated `michelf/php-smartypants` dependency to version 1.6 (beta).
 
 ### Fixed ###
+- Fixed [issue 2][issue-2] by updating SmartyPants dependency.
 
-## 0.1.0 - 2015-12-31 ##
+[issue-2]: https://github.com/monooso/smartdown.craft-plugin/issues/2
+
+## [1.0.0] - 2015-07-30 ##
 ### Added ###
-- Something that was added.
+- Added `SmartDownService`, accessible via `craft()->smartDown`, so third-parties can share the love.
+- Added `modifySmartdownMarkupInput` hook.
+- Added `modifySmartdownMarkupOutput` hook.
+- Added `modifySmartdownTypographyInput` hook.
+- Added `modifySmartdownTypographyOutput` hook.
 
 ### Changed ###
-- Something that was updated.
+- Deprecated `markdown` Twig filter option; use `markup` instead.
+- Deprecated `smartypants` Twig filter option; use `typography` instead.
 
-### Fixed ###
-- Something that was fixed.
+## 0.1.0 - 2013-08-21 ##
+Initial release.
 
-[Unreleased]: https://github.com/monooso/smartdown.craft-plugin/compare/v0.1.0...HEAD
+### Added ###
+- Added `smartdown` Twig filter, which runs a string through "Multi-Markdown" and "SmartyPants" parsers.
+
+[Unreleased]: https://github.com/monooso/smartdown.craft-plugin/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/monooso/smartdown.craft-plugin/compare/0.1.0...1.0.0
