@@ -9,6 +9,9 @@ Craft already supports standard Markdown, but sadly standard Markdown doesn't su
 
 SmartDown plugs both of these gaps, turning your website into a typographic dreamboat.
 
+## Requirements ##
+SmartDown requires PHP 5.4 or above. It has been tested with Craft 2.4.
+
 ## Installation ##
 1. [Download][download] and unzip SmartDown.
 2. Copy the `src/smartdown` folder to your `craft/plugins/` directory.
