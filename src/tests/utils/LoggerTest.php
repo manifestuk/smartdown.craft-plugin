@@ -18,6 +18,14 @@ class LoggerTest extends BaseTest
     {
         $this->mockLogger = m::mock('\Craft\Logger');
         $this->mockPlugin = m::mock('alias:Craft\SmartdownPlugin');
+        $this->mockTranslator = m::mock('alias:Craft\Craft');
+
+        $this->mockTranslator
+            ->shouldReceive('t')->once()->with(m::any())
+            ->andReturnUsing(function ($message) {
+                return $message;
+            });
+
         $this->testSubject = new Logger();
     }
 

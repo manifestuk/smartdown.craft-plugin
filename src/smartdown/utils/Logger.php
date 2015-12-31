@@ -1,5 +1,6 @@
 <?php namespace Smartdown\Utils;
 
+use Craft\Craft;
 use Craft\Logger as CraftLogger;
 use Craft\SmartdownPlugin;
 
@@ -12,7 +13,19 @@ class Logger
      */
     public function logInfo($message)
     {
-        SmartdownPlugin::log($message, CraftLogger::LEVEL_INFO);
+        $this->log($message, CraftLogger::LEVEL_INFO);
+    }
+
+    /**
+     * Logs the given message with the given "level" to the plugin log file.
+     * Automatically translates the message prior to logging.
+     *
+     * @param $message
+     * @param $level
+     */
+    private function log($message, $level)
+    {
+        SmartdownPlugin::log(Craft::t($message), $level);
     }
 
     /**
@@ -22,7 +35,7 @@ class Logger
      */
     public function logWarning($message)
     {
-        SmartdownPlugin::log($message, CraftLogger::LEVEL_WARNING);
+        $this->log($message, CraftLogger::LEVEL_WARNING);
     }
 
     /**
@@ -32,6 +45,6 @@ class Logger
      */
     public function logError($message)
     {
-        SmartdownPlugin::log($message, CraftLogger::LEVEL_ERROR);
+        $this->log($message, CraftLogger::LEVEL_ERROR);
     }
 }
