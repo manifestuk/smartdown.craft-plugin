@@ -1,5 +1,5 @@
-# SmartDown for Craft #
-SmartDown for Craft is a Twig Filter which brings the unbridled joy of [Markdown Extra][md_extra] and [Smartypants][smartypants] to [Craft][craft].
+# Smartdown for Craft #
+Smartdown for Craft is a Twig Filter which brings the unbridled joy of [Markdown Extra][md_extra] and [Smartypants][smartypants] to [Craft][craft].
 
 [craft]:http://buildwithcraft.com
 [md_extra]:http://michelf.ca/projects/php-markdown/
@@ -7,21 +7,21 @@ SmartDown for Craft is a Twig Filter which brings the unbridled joy of [Markdown
 
 Craft already supports standard Markdown, but sadly standard Markdown doesn't support lots of useful things such as footnotes, fenced code blocks, and tables. It also does nothing to spruce up your typography, leaving your site with an embarrassment of straight quotes, and faux ellipses.
 
-SmartDown plugs both of these gaps, turning your website into a typographic dreamboat.
+Smartdown plugs both of these gaps, turning your website into a typographic dreamboat.
 
 ## Requirements ##
-SmartDown requires PHP 5.4 or above. It has been tested with Craft 2.4.
+Smartdown requires PHP 5.4 or above. It has been tested with Craft 2.4.
 
 ## Installation ##
-1. [Download][download] and unzip SmartDown.
+1. [Download][download] and unzip Smartdown.
 2. Copy the `src/smartdown` folder to your `craft/plugins/` directory.
-3. Navigate to the "[Craft Admin &rarr; Settings &rarr; Plugins][plugins]" page, and activate SmartDown.
+3. Navigate to the "[Craft Admin &rarr; Settings &rarr; Plugins][plugins]" page, and activate Smartdown.
 
 [download]: https://github.com/experience/smartdown.craft-plugin/archive/master.zip
 [plugins]: http://docs.buildwithcraft.com/cp/settings/plugins.html
 
 ## Basic usage ##
-Use the SmartDown filter in exactly the same way as any other Twig filter.
+Use the Smartdown filter in exactly the same way as any other Twig filter.
 
     {{ myVariable | smartdown }}
 
@@ -48,9 +48,3 @@ The `typography` filter parameter controls whether the text will be parsed using
 Example usage:
 
     {{ content | smartdown(typography=false) }}
-
-## Deprecated filter parameters ##
-As of version 1.0.0, the following parameters have been officially deprecated:
-
-- `markdown`: use `markup` instead.
-- `smartypants`: use `typography` instead.
