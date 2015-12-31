@@ -1,21 +1,56 @@
 <?php namespace Craft;
 
-class SmartDownPlugin extends BasePlugin
+class SmartdownPlugin extends BasePlugin
 {
     /**
      * Initialises the plugin.
      */
     public function init()
     {
+        parent::init();
         $this->initializeAutoloader();
+        $this->initializeServiceProvider();
+        $this->populateServiceProvider();
     }
 
     /**
-     * Requires the Composer-generated autoloader.
+     * Initialises the autoloader.
      */
     private function initializeAutoloader()
     {
         require_once __DIR__ . '/vendor/autoload.php';
+    }
+
+    /**
+     * Initialises the service provider.
+     */
+    private function initializeServiceProvider()
+    {
+        require_once __DIR__ . '/smartdown.php';
+    }
+
+    /**
+     * Populates the service provider.
+     */
+    private function populateServiceProvider()
+    {
+        // Returns an instance of the Craft application.
+        smartdown()->stash('app', function () {
+            return Craft::app();
+        });
+
+        // Wrapper for the Craft::t static method.
+        smartdown()->stash('translate', function ($message, array $variables = []) {
+            return call_user_func_array(
+                ['\Craft\Craft', 't'],
+                func_get_args()
+            );
+        });
+
+        // Writes the given error message to the plugin log file.
+        smartdown()->stash('logError', function ($message) {
+            SmartdownPlugin::log($message, LogLevel::Error);
+        });
     }
 
     /**
@@ -25,13 +60,23 @@ class SmartDownPlugin extends BasePlugin
      */
     public function getName()
     {
-        return 'SmartDown';
+        return 'Smartdown';
     }
 
     /**
-     * Returns the plugin version.
+     * Returns the plugin description.
      *
      * @return string
+     */
+    public function getDescription()
+    {
+        return Craft::t("Smarter Markdown for Craft.");
+    }
+
+    /**
+     * Returns the plugin’s version number.
+     *
+     * @return string The plugin’s version number.
      */
     public function getVersion()
     {
@@ -39,9 +84,9 @@ class SmartDownPlugin extends BasePlugin
     }
 
     /**
-     * Returns the name of the plugin developer.
+     * Returns the plugin developer’s name.
      *
-     * @return string
+     * @return string The plugin developer’s name.
      */
     public function getDeveloper()
     {
@@ -49,9 +94,9 @@ class SmartDownPlugin extends BasePlugin
     }
 
     /**
-     * Returns the preferred URL of the plugin developer.
+     * Returns the plugin developer’s URL.
      *
-     * @return string
+     * @return string The plugin developer’s URL.
      */
     public function getDeveloperUrl()
     {
@@ -61,12 +106,10 @@ class SmartDownPlugin extends BasePlugin
     /**
      * Registers the Twig extension.
      *
-     * @return SmartDownTwigExtension
+     * @return SmartdownTwigExtension
      */
     public function addTwigExtension()
     {
-        Craft::import('plugins.smartdown.twigextensions.SmartDownTwigExtension');
-
-        return new SmartDownTwigExtension();
+        return new SmartdownTwigExtension();
     }
 }
