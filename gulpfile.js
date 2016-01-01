@@ -1,7 +1,6 @@
 var gulp = require('gulp')
   , bump = require('gulp-bump')
   , del = require('del')
-  , git = require('gulp-git')
   , zip = require('gulp-zip');
 
 /**
