@@ -36,19 +36,6 @@ gulp.task('build', ['copy-to-tmp'], function () {
     .pipe(gulp.dest('releases'));
 });
 
-gulp.task('tag', ['build'], function () {
-  var config = require('./src/smartdown/config.json')
-    , version = config.version
-    , message = 'Release ' + version;
-
-  return git.tag(version, message);
-});
-
-// Pushes any commits and tags.
-gulp.task('release', ['tag'], function () {
-  return git.push('origin', 'master', '--tags');
-});
-
 // Bump the plugin "major" version.
 gulp.task('bump-major', function () {
   return bumpVersion('major');
@@ -63,7 +50,3 @@ gulp.task('bump-minor', function () {
 gulp.task('bump-patch', function () {
   return bumpVersion('patch');
 });
-
-// Create a release.
-// Won't work, because annoying async.
-//gulp.task('release-patch', ['bump-patch', 'tag-release']);
