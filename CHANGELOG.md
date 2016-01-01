@@ -6,6 +6,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### Added ###
 - Added change log.
 - Added unit tests for all "utility" classes.
+- Implemented rudimentary build process.
 
 ### Changed ###
 - Renamed the plugin from SmartDown to Smartdown.
