@@ -1,6 +1,7 @@
 <?php namespace Craft;
 
 use Michelf\MarkdownExtra;
+use Michelf\SmartyPants;
 use Smartdown\Utils\Logger as SmartdownLogger;
 use Smartdown\Utils\Parser;
 
