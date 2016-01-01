@@ -1,12 +1,36 @@
 <?php namespace Craft;
 
 use Michelf\MarkdownExtra;
-use Michelf\SmartyPants;
-use Smartdown\Utils\Logger;
+use Smartdown\Utils\Logger as SmartdownLogger;
 use Smartdown\Utils\Parser;
 
 class SmartdownPlugin extends BasePlugin
 {
+    private $config;
+
+    /**
+     * SmartdownPlugin constructor. Loads the config file containing the plugin
+     * information.
+     *
+     * We can't do this from the `init` method, because Craft calls `getName`,
+     * `getVersion`, and so forth before running the `init` method.
+     */
+    public function __construct()
+    {
+        $this->loadConfig();
+    }
+
+    /**
+     * Loads the JSON config file, and stores it in the config variable.
+     *
+     * @TODO Implement some error checking.
+     */
+    private function loadConfig()
+    {
+        $json = file_get_contents(__DIR__ . '/config.json');
+        $this->config = JsonHelper::decode($json, false);
+    }
+
     /**
      * Initialises the plugin.
      */
@@ -80,7 +104,7 @@ class SmartdownPlugin extends BasePlugin
                 new MarkdownExtra(),
                 new SmartyPants(),
                 smartdown()->app->plugins,
-                new Logger()
+                new SmartdownLogger()
             );
         });
     }
@@ -92,7 +116,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getName()
     {
-        return 'Smartdown';
+        return $this->config->name;
     }
 
     /**
@@ -102,7 +126,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getDescription()
     {
-        return Craft::t("Smarter Markdown for Craft.");
+        return Craft::t($this->config->description);
     }
 
     /**
@@ -112,7 +136,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.0';
+        return $this->config->version;
     }
 
     /**
@@ -122,7 +146,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getDeveloper()
     {
-        return 'Experience';
+        return $this->config->developer;
     }
 
     /**
@@ -132,7 +156,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getDeveloperUrl()
     {
-        return 'https://experiencehq.net';
+        return $this->config->developerUrl;
     }
 
     /**
