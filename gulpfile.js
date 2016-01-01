@@ -9,59 +9,44 @@ var gulp = require('gulp')
  *
  * @param string type The bump type (major|minor|patch).
  */
-function bumpVersion(type) {
+var bumpVersion = function(type) {
   return gulp.src('./src/smartdown/config.json')
     .pipe(bump({type: type}))
     .pipe(gulp.dest('./src/smartdown/'));
 }
 
-// Clean up build directory.
-gulp.task('clean-build', function () {
-  return del(['build/**', '!build']);
+// Clean up tmp directory.
+gulp.task('clean-tmp', function () {
+  return del(['tmp/**']);
 });
 
-// Copy "release" files to the build directory.
-gulp.task('copy-to-build', ['clean-build'], function () {
-  gulp.src(['CHANGELOG.md', 'LICENSE.txt', 'README.md']).pipe(gulp.dest('build'));
-  return gulp.src('src/smartdown/**/*', {base: 'src'}).pipe(gulp.dest('build'));
+// Copy "release" files to the tmp directory.
+gulp.task('copy-to-tmp', ['clean-tmp'], function () {
+  gulp.src(['CHANGELOG.md', 'LICENSE.txt', 'README.md']).pipe(gulp.dest('tmp'));
+  return gulp.src('src/smartdown/**/*', {base: 'src'}).pipe(gulp.dest('tmp'));
 });
 
 // Build a zip file for distribution.
-gulp.task('build-zip', ['copy-to-build'], function () {
-  var config = require('./build/smartdown/config.json')
+gulp.task('build', ['copy-to-tmp'], function () {
+  var config = require('./src/smartdown/config.json')
     , filename = 'smartdown-' + config.version + '.zip';
 
-  return gulp.src('build/**/*')
+  return gulp.src('tmp/**/*')
     .pipe(zip(filename))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('releases'));
 });
 
-// Commits any outstanding changes, and tags the release.
-gulp.task('tag-release', function() {
-  var config = require('./build/smartdown/config.json')
+gulp.task('tag', ['build'], function () {
+  var config = require('./src/smartdown/config.json')
     , version = config.version
     , message = 'Release ' + version;
 
-  return gulp.src('./*')
-    .pipe(git.add())
-    .pipe(git.commit(message))
-    .pipe(git.tag(version, message))
-    .pipe(gulp.dest('./'));
+  return git.tag(version, message);
 });
 
 // Pushes any commits and tags.
-gulp.task('push-release', function () {
+gulp.task('release', ['tag'], function () {
   return git.push('origin', 'master', '--tags');
-});
-
-// Bump the plugin "patch" version.
-gulp.task('bump-patch', function () {
-  return bumpVersion('patch');
-});
-
-// Bump the plugin "minor" version.
-gulp.task('bump-minor', function () {
-  return bumpVersion('minor');
 });
 
 // Bump the plugin "major" version.
@@ -69,5 +54,16 @@ gulp.task('bump-major', function () {
   return bumpVersion('major');
 });
 
+// Bump the plugin "minor" version.
+gulp.task('bump-minor', function () {
+  return bumpVersion('minor');
+});
+
+// Bump the plugin "patch" version.
+gulp.task('bump-patch', function () {
+  return bumpVersion('patch');
+});
+
 // Create a release.
-gulp.task('release-patch', ['bump-patch', 'copy-to-build', 'build-zip', 'tag-release']);
+// Won't work, because annoying async.
+//gulp.task('release-patch', ['bump-patch', 'tag-release']);
