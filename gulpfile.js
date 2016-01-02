@@ -21,8 +21,10 @@ gulp.task('clean-tmp', function () {
 
 // Copy "release" files to the tmp directory.
 gulp.task('copy-to-tmp', ['clean-tmp'], function () {
-  gulp.src(['CHANGELOG.md', 'LICENSE.txt', 'README.md']).pipe(gulp.dest('tmp'));
-  return gulp.src('src/smartdown/**/*', {base: 'src'}).pipe(gulp.dest('tmp'));
+  gulp.src(['CHANGELOG.md', 'LICENSE.txt']).pipe(gulp.dest('tmp'));
+
+  return gulp.src(['src/README.md', 'src/smartdown/**/*'], {base: 'src'})
+    .pipe(gulp.dest('tmp'));
 });
 
 // Build a zip file for distribution.
