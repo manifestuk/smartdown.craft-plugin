@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1] - 2016-01-02 ##
+### Fixed ###
+- Fixed copying of README in build process.
+
 ## [2.0.0] - 2016-01-01 ##
 ### Added ###
 - Added change log.
@@ -39,5 +43,6 @@ Initial release.
 - Added `smartdown` Twig filter, which runs a string through "Multi-Markdown" and "SmartyPants" parsers.
 
 [Unreleased]: https://github.com/monooso/smartdown.craft-plugin/compare/1.0.0...HEAD
+[2.0.1]: https://github.com/monooso/smartdown.craft-plugin/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/monooso/smartdown.craft-plugin/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/monooso/smartdown.craft-plugin/compare/0.1.0...1.0.0
