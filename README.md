@@ -6,12 +6,21 @@ Smartdown for Craft is a Twig Filter which brings the unbridled joy of
 [md_extra]:http://michelf.ca/projects/php-markdown/
 [smartypants]:http://michelf.ca/projects/php-smartypants/
 
+## Installation ##
+
+1. Download the ZIP file of [the latest release][latest_release].
+2. UnZIP the files, and copy the `smartdown-<version>/smartdown` folder your `craft/plugins` directory.
+3. Install and enable Smartdown in the Craft admin area.
+
+[latest_release]: https://github.com/monooso/smartdown.craft-plugin/releases/latest
+
 ## Usage ##
 Full installation and usage instructions are available in [the `/src/README.md` file][usage].
 
 [usage]: src/README.md "Installation and usage instructions."
 
-## Build process ##
+## Development ##
+### Build process ###
 Smartdown uses Gulp to package everything for release. The current process needs
 improvement, but it's a decent start.
 
