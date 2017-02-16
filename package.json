@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "del": "~2.2",
-    "gulp": "~3.9",
-    "gulp-bump": "^1.0.0",
-    "gulp-zip": "~3.0"
-  }
-}
