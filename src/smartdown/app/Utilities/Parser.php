@@ -77,11 +77,16 @@ class Parser
         }
 
         $service = $this->pluginsService;
-        $input = $service->call('modifySmartdownTypographyInput', $input);
-        $input = $this->typographyParser->transform($input);
-        $input = $service->call('modifySmartdownTypographyOutput', $input);
 
-        return $input;
+        // Allow plugins to modify the input.
+         $service->call('modifySmartdownTypographyInput', [&$input]);
+
+        $output = $this->typographyParser->transform($input);
+
+        // Allow plugins to modify the output.
+        $service->call('modifySmartdownTypographyOutput', [&$output]);
+
+        return $output;
     }
 
     /**
@@ -99,11 +104,16 @@ class Parser
         }
 
         $service = $this->pluginsService;
-        $input = $service->call('modifySmartdownMarkupInput', $input);
-        $input = $this->markupParser->transform($input);
-        $input = $service->call('modifySmartdownMarkupOutput', $input);
 
-        return $input;
+        // Allow plugins to modify the input.
+        $service->call('modifySmartdownMarkupInput', [&$input]);
+
+        $output = $this->markupParser->transform($input);
+
+        // Allow plugins to modify the output.
+        $service->call('modifySmartdownMarkupOutput', [&$output]);
+
+        return $output;
     }
 
     /**

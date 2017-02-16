@@ -75,10 +75,9 @@ class ParserIntegrationTest extends BaseTest
     protected function mockNoHandlers($hook)
     {
         $this->mockPluginsService->shouldReceive('call')
-            ->once()->with($hook, m::any())
-            ->andReturnUsing(function ($h, $v) {
-                return $v;
-            });
+            ->zeroOrMoreTimes()
+            ->with($hook, m::any())
+            ->andReturn(null);
     }
 
     public function testItParsesTypography()

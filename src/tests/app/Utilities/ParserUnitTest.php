@@ -80,10 +80,9 @@ class ParserTest extends BaseTest
     protected function mockNoHandlers($hook)
     {
         $this->mockPluginsService->shouldReceive('call')
-            ->once()->with($hook, m::any())
-            ->andReturnUsing(function ($h, $v) {
-                return $v;
-            });
+            ->zeroOrMoreTimes()
+            ->with($hook, m::any())
+            ->andReturn(null);
     }
 
     public function testItParsesTypography()
@@ -179,94 +178,6 @@ class ParserTest extends BaseTest
         $this->assertEquals(
             $expectedOutput,
             $this->testSubject->parseTypography($inputObject)
-        );
-    }
-
-    public function testOtherPluginsCanModifyTheMarkupInput()
-    {
-        $originalInput = 'Original input';
-        $modifiedInput = 'Modified input';
-        $expectedOutput = '<p>Modified input</p>';
-
-        $this->mockNoHandlers('modifySmartdownMarkupOutput');
-
-        $this->mockPluginsService->shouldReceive('call')
-            ->once()->with('modifySmartdownMarkupInput', $originalInput)
-            ->andReturn($modifiedInput);
-
-        $this->mockMarkup->shouldReceive('transform')
-            ->once()->with($modifiedInput)
-            ->andReturn($expectedOutput);
-
-        $this->assertEquals(
-            $expectedOutput,
-            $this->testSubject->parseMarkup($originalInput)
-        );
-    }
-
-    public function testOtherPluginsCanModifyTheMarkupOutput()
-    {
-        $originalInput = 'Original input';
-        $originalOutput = '<p>Original output</p>';
-        $modifiedOutput = '<p>Modified output</p>';
-
-        $this->mockNoHandlers('modifySmartdownMarkupInput');
-
-        $this->mockMarkup->shouldReceive('transform')
-            ->once()->with($originalInput)
-            ->andReturn($originalOutput);
-
-        $this->mockPluginsService->shouldReceive('call')
-            ->once()->with('modifySmartdownMarkupOutput', $originalOutput)
-            ->andReturn($modifiedOutput);
-
-        $this->assertEquals(
-            $modifiedOutput,
-            $this->testSubject->parseMarkup($originalInput)
-        );
-    }
-
-    public function testOtherPluginsCanModifyTheTypographyInput()
-    {
-        $originalInput = 'Original input';
-        $modifiedInput = 'Modified input';
-        $expectedOutput = 'Expected output';
-
-        $this->mockNoHandlers('modifySmartdownTypographyOutput');
-
-        $this->mockPluginsService->shouldReceive('call')
-            ->once()->with('modifySmartdownTypographyInput', $originalInput)
-            ->andReturn($modifiedInput);
-
-        $this->mockTypography->shouldReceive('transform')
-            ->once()->with($modifiedInput)
-            ->andReturn($expectedOutput);
-
-        $this->assertEquals(
-            $expectedOutput,
-            $this->testSubject->parseTypography($originalInput)
-        );
-    }
-
-    public function testOtherPluginsCanModifyTheTypographyOutput()
-    {
-        $originalInput = 'Original input';
-        $originalOutput = 'Original output';
-        $modifiedOutput = 'Modified output';
-
-        $this->mockNoHandlers('modifySmartdownTypographyInput');
-
-        $this->mockTypography->shouldReceive('transform')
-            ->once()->with($originalInput)
-            ->andReturn($originalOutput);
-
-        $this->mockPluginsService->shouldReceive('call')
-            ->once()->with('modifySmartdownTypographyOutput', $originalOutput)
-            ->andReturn($modifiedOutput);
-
-        $this->assertEquals(
-            $modifiedOutput,
-            $this->testSubject->parseTypography($originalInput)
         );
     }
 }
