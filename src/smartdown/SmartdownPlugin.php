@@ -53,7 +53,7 @@ class SmartdownPlugin extends BasePlugin
      */
     private function loadConfig()
     {
-        $path = __DIR__ . '/config.json';
+        $path = __DIR__ . '/plugin.json';
         $this->config = (new ConfigHelper())->getConfig($path);
     }
 
