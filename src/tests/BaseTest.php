@@ -1,4 +1,4 @@
-<?php namespace Smartdown\Tests;
+<?php namespace Experience\Smartdown\Tests;
 
 use \Mockery as m;
 use \PHPUnit_Framework_TestCase;
