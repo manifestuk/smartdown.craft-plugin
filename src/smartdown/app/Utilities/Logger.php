@@ -1,4 +1,4 @@
-<?php namespace Smartdown\Utils;
+<?php namespace Experience\Smartdown\App\Utilities;
 
 use Craft\Craft;
 use Craft\Logger as CraftLogger;
