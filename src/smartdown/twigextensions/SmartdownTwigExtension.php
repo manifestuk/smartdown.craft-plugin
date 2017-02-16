@@ -36,7 +36,7 @@ class SmartdownTwigExtension extends Twig_Extension
      * results.
      *
      * Usage:
-     * {{ 'Gives us "pretty quotes" and an ellipsis' | smartdown }}
+     * {{ 'Gives us "pretty quotes" and an ellipsis'|smartdown }}
      *
      * @param string $source      The string to parse.
      * @param bool   $markup      Run the string through the markup filter?
