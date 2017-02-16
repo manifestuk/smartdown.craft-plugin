@@ -1,46 +1,32 @@
 <?php namespace Craft;
 
-use Michelf\MarkdownExtra;
-use Michelf\SmartyPants;
-use Smartdown\Utils\Logger as SmartdownLogger;
-use Smartdown\Utils\Parser;
+use League\Container\Container;
+use Experience\Smartdown\App\Helpers\ConfigHelper;
+use Experience\Smartdown\App\ServiceProviders\PluginServiceProvider;
 
 class SmartdownPlugin extends BasePlugin
 {
-    private $config;
+    /**
+     * @var \League\Container\Container;
+     */
+    public static $container;
 
     /**
-     * SmartdownPlugin constructor. Loads the config file containing the plugin
-     * information.
+     * @param object
+     */
+    protected $config;
+
+    /**
+     * Constructor. Loads the config file containing the plugin information.
      *
      * We can't do this from the `init` method, because Craft calls `getName`,
      * `getVersion`, and so forth before running the `init` method.
      */
     public function __construct()
     {
-        $this->loadConfig();
-    }
-
-    /**
-     * Loads the JSON config file, and stores it in the config variable.
-     *
-     * @TODO Implement some error checking.
-     */
-    private function loadConfig()
-    {
-        $json = file_get_contents(__DIR__ . '/config.json');
-        $this->config = JsonHelper::decode($json, false);
-    }
-
-    /**
-     * Initialises the plugin.
-     */
-    public function init()
-    {
-        parent::init();
         $this->initializeAutoloader();
-        $this->initializeServiceProvider();
-        $this->populateServiceProvider();
+        $this->initializeContainer();
+        $this->loadConfig();
     }
 
     /**
@@ -52,62 +38,23 @@ class SmartdownPlugin extends BasePlugin
     }
 
     /**
-     * Initialises the service provider.
+     * Initialises the dependency-injection container.
      */
-    private function initializeServiceProvider()
+    private function initializeContainer()
     {
-        require_once __DIR__ . '/smartdown.php';
-    }
-
-    /**
-     * Populates the service provider.
-     */
-    private function populateServiceProvider()
-    {
-        $this->stashApplication();
-        $this->stashTranslator();
-        $this->stashUtilities();
-    }
-
-    /**
-     * Stashes a reference to the Craft application in the service locator.
-     */
-    private function stashApplication()
-    {
-        smartdown()->stash('app', function () {
-            return Craft::app();
-        });
-    }
-
-    /**
-     * Stashes a "translate" helper in the service locator.
-     */
-    private function stashTranslator()
-    {
-        smartdown()->stash('translate',
-            function ($message, array $variables = []) {
-                return call_user_func_array(
-                    ['\Craft\Craft', 't'],
-                    func_get_args()
-                );
-            }
+        static::$container = new Container();
+        static::$container->addServiceProvider(
+            new PluginServiceProvider(craft())
         );
     }
 
     /**
-     * Stashes the plugin "utility" classes in the service locator.
+     * Loads the plugin configuration details from the config file.
      */
-    private function stashUtilities()
+    private function loadConfig()
     {
-        // Stashes an instance of the Parser class in the service locator.
-        smartdown()->stash('parser', function () {
-            return Parser::getInstance(
-                new MarkdownExtra(),
-                new SmartyPants(),
-                smartdown()->app->plugins,
-                new SmartdownLogger()
-            );
-        });
+        $path = __DIR__ . '/config.json';
+        $this->config = (new ConfigHelper())->getConfig($path);
     }
 
     /**
@@ -117,7 +64,7 @@ class SmartdownPlugin extends BasePlugin
      */
     public function getName()
     {
-        return $this->config->name;
+        return Craft::t($this->config->name);
     }
 
     /**
@@ -158,6 +105,58 @@ class SmartdownPlugin extends BasePlugin
     public function getDeveloperUrl()
     {
         return $this->config->developerUrl;
+    }
+
+    /**
+     * Returns the documentation URL.
+     *
+     * @return string
+     */
+    public function getDocumentationUrl()
+    {
+        return $this->config->documentationUrl;
+    }
+
+    /**
+     * Returns the "releases" URL.
+     *
+     * @return string
+     */
+    public function getReleaseFeedUrl()
+    {
+        return $this->config->releasesFeedUrl;
+    }
+
+    /**
+     * Returns a faux schema version, so Craft doesn't attempt to run database
+     * updates when the plugin version changes.
+     *
+     * @return string
+     */
+    public function getSchemaVersion()
+    {
+        return '0.0.0';
+    }
+
+    /**
+     * Returns a boolean indicating whether the plugin has settings.
+     *
+     * @return bool
+     */
+    public function hasSettings()
+    {
+        return false;
+    }
+
+    /**
+     * Returns a boolean indicating whether the plugin has it's own control
+     * panel section.
+     *
+     * @return bool
+     */
+    public function hasCpSection()
+    {
+        return false;
     }
 
     /**
