@@ -6,5 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Smartdown\\Utils\\' => array($baseDir . '/utils'),
+    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'League\\Container\\' => array($vendorDir . '/league/container/src'),
+    'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
+    'Experience\\Smartdown\\App\\' => array($baseDir . '/app'),
 );
