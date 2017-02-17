@@ -12,7 +12,7 @@ use Michelf\SmartyPants;
  *
  * @package Experience\Smartdown\Tests\App\Utilities
  */
-class ParserIntegrationTest extends BaseTest
+class ParserFunctionalTest extends BaseTest
 {
     /**
      * @var \Experience\Smartdown\App\Utilities\Logger;
