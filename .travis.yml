@@ -7,7 +7,7 @@ php:
   - hhvm
   - nightly
 install:
-  - composer install --prefer-dist -o -n -d src/entitle
+  - composer install --prefer-dist -o -n -d src/smartdown
   - composer install --prefer-dist -o -n -d src/tests
 script:
   - ./src/tests/vendor/bin/phpunit --configuration ./src/tests/phpunit.xml
