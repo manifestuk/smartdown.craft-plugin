@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased] ##
+### Fixed ###
+- Tidy up README.
+
 ## [2.1.0] - 2017-02-17 ##
 ### Added ###
 - Add Travis CI configuration.
@@ -54,7 +58,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Initial release.
 
 ### Added ###
-- Add `smartdown` Twig filter, which runs a string through "Multi-Markdown" and "SmartyPants" parsers.
+- Add `smartdown` Twig filter, which runs a string through "Markdown Extra" and "SmartyPants" parsers.
 
 [Unreleased]: https://github.com/monooso/smartdown.craft-plugin/compare/2.1.0...HEAD
 [2.1.0]: https://github.com/monooso/smartdown.craft-plugin/compare/2.1.0...2.0.1
