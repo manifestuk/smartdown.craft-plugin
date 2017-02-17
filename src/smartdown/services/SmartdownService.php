@@ -2,6 +2,9 @@
 
 class SmartdownService extends BaseApplicationComponent
 {
+    /**
+     * @var \Experience\Smartdown\App\Utilities\Parser;
+     */
     protected $parser;
 
     /**
@@ -9,7 +12,7 @@ class SmartdownService extends BaseApplicationComponent
      */
     public function __construct()
     {
-        $this->parser = smartdown()->parser;
+        $this->parser = SmartdownPlugin::$container->get('Parser');
     }
 
     /**

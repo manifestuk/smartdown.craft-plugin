@@ -1,8 +1,6 @@
 {
   "devDependencies": {
-    "del": "~2.2",
-    "gulp": "~3.9",
-    "gulp-bump": "^1.0.0",
-    "gulp-zip": "~3.0"
+    "pluggage.craft-utility": "git+ssh://git@bitbucket.org/experience/plugin-packager.craft-utility.git#master"
   }
 }
+

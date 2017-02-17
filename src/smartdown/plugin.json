@@ -1,0 +1,9 @@
+{
+  "name": "Smartdown",
+  "description": "Smarter Markdown for Craft.",
+  "version": "2.0.1",
+  "developer": "Experience",
+  "developerUrl": "https://experiencehq.net",
+  "documentationUrl": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
+  "releasesFeedUrl": "https://raw.githubusercontent.com/experience/smartdown.craft-plugin/master/releases.json"
+}

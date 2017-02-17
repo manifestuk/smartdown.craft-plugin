@@ -4,12 +4,13 @@
       "twigextensions/"
     ],
     "psr-4": {
-      "Smartdown\\Utils\\": "utils/"
+      "Experience\\Smartdown\\App\\": "app/"
     }
   },
   "minimum-stability": "stable",
   "require": {
-    "michelf/php-markdown": "~1.6",
-    "michelf/php-smartypants": "~1.6@beta"
+    "league/container": "2.2.*",
+    "michelf/php-markdown": "1.7.*",
+    "michelf/php-smartypants": "1.8.*"
   }
 }
