@@ -1,6 +1,5 @@
 {
   "autoload": {
-    "classmap": ["mocks/"],
     "psr-4": {
       "Experience\\Smartdown\\App\\": "../src/smartdown/app/",
       "Experience\\Smartdown\\Tests\\": "./",
