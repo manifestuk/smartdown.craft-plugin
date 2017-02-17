@@ -1,12 +1,28 @@
 [
   {
-    "date": "2016-01-02T00:00:00+0000",
-    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/2.0.1/smartdown-2.0.1.zip",
+    "date": "2013-08-21T00:00:00+0000",
+    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/0.1.0/smartdown-0.1.0.zip",
     "notes": [
-      "## Fixed ##",
-      "[Fixed] Fix copying of README in build process."
+      "## Initial release ##",
+      "[Added] Add 'smartdown' Twig filter, which runs a string through MarkdownExtra and SmartyPants."
     ],
-    "version": "2.0.1"
+    "version": "0.1.0"
+  },
+  {
+    "date": "2015-07-30T00:00:00+0000",
+    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/1.0.0/smartdown-1.0.0.zip",
+    "notes": [
+      "## Added ##",
+      "[Added] Add 'SmartDownService'.",
+      "[Added] Add 'modifySmartdownMarkupInput' hook.",
+      "[Added] Add 'modifySmartdownMarkupOutput' hook.",
+      "[Added] Add 'modifySmartdownTypographyInput' hook.",
+      "[Added] Add 'modifySmartdownTypographyOutput' hook.",
+      "## Changed ##",
+      "[Changed] Deprecate 'markdown' Twig filter option. Use 'markup' instead.",
+      "[Changed] Deprecate 'smartypants' Twig filter option. Use 'typography' instead."
+    ],
+    "version": "1.0.0"
   },
   {
     "date": "2016-01-01T00:00:00+0000",
@@ -28,28 +44,29 @@
     "version": "2.0.0"
   },
   {
-    "date": "2015-07-30T00:00:00+0000",
-    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/1.0.0/smartdown-1.0.0.zip",
+    "date": "2016-01-02T00:00:00+0000",
+    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/2.0.1/smartdown-2.0.1.zip",
     "notes": [
-      "## Added ##",
-      "[Added] Add 'SmartDownService'.",
-      "[Added] Add 'modifySmartdownMarkupInput' hook.",
-      "[Added] Add 'modifySmartdownMarkupOutput' hook.",
-      "[Added] Add 'modifySmartdownTypographyInput' hook.",
-      "[Added] Add 'modifySmartdownTypographyOutput' hook.",
-      "## Changed ##",
-      "[Changed] Deprecate 'markdown' Twig filter option. Use 'markup' instead.",
-      "[Changed] Deprecate 'smartypants' Twig filter option. Use 'typography' instead."
+      "## Fixed ##",
+      "[Fixed] Fix copying of README in build process."
     ],
-    "version": "1.0.0"
+    "version": "2.0.1"
   },
   {
-    "date": "2013-08-21T00:00:00+0000",
-    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/0.1.0/smartdown-0.1.0.zip",
+    "date": "2017-02-17T23:30:00+0000",
+    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/releases/download/2.1.0/smartdown-2.1.0.zip",
     "notes": [
-      "## Initial release ##",
-      "[Added] Add 'smartdown' Twig filter, which runs a string through MarkdownExtra and SmartyPants."
+      "### Added ###",
+      "[Added] Add Travis CI configuration.",
+      "[Added] Add documentation URL.",
+      "[Added] Add schema version.",
+      "[Added] Add releases feed.",
+      "### Changed ###",
+      "[Changed] Reorganise plugin according to current best practices.",
+      "[Changed] Use present tense in CHANGELOG.",
+      "### Fixed ###",
+      "[Fixed] Update parser to accept objects with a `__toString` method."
     ],
-    "version": "0.1.0"
+    "version": "2.1.0"
   }
 ]
