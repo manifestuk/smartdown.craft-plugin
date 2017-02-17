@@ -1,0 +1,13 @@
+language: php
+php:
+  - '5.5'
+  - '5.6'
+  - '7.0'
+  - '7.1'
+  - hhvm
+  - nightly
+install:
+  - composer install --prefer-dist -o -n -d src/entitle
+  - composer install --prefer-dist -o -n -d src/tests
+script:
+  - ./src/tests/vendor/bin/phpunit --configuration ./src/tests/phpunit.xml
