@@ -1,0 +1,40 @@
+{
+  "name": "experience/smartdown",
+  "description": "Bringing the unbridled joy of Markdown Extra and Smartypants to your Craft websites.",
+  "version": "3.0.0",
+  "type": "craft-plugin",
+  "minimum-stability": "dev",
+  "require": {
+    "michelf/php-markdown": "^1.8",
+    "michelf/php-smartypants": "^1.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "experience\\smartdown\\": "src/",
+      "experience\\smartdown\\tests\\": "tests/"
+    }
+  },
+  "support": {
+    "email": "stephen@experiencehq.net"
+  },
+  "extra": {
+    "changelogUrl": "https://github.com/experience/smartdown.craft-plugin/blob/master/CHANGELOG.md",
+    "components": {
+      "smartdown": "experience\\smartdown\\services\\Smartdown"
+    },
+    "documentationUrl": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
+    "class": "experience\\smartdown\\Smartdown",
+    "developer": "Experience",
+    "developerUrl": "https://experiencehq.net",
+    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/archive/master.zip",
+    "handle": "smartdown",
+    "hasCpSection": false,
+    "hasSettings": false,
+    "name": "Smartdown",
+    "sourceLanguage": "en-GB"
+  },
+  "require-dev": {
+    "codeception/codeception": "dev-master",
+    "craftcms/cms": "^3.0.0-RC1"
+  }
+}

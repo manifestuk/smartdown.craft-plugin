@@ -1,67 +1,61 @@
-# Change Log #
-All notable changes to this project will be documented in this file. This
-project adheres to [Semantic Versioning](http://semver.org/).
+# Changelog
 
-## [Unreleased] ##
-### Fixed ###
-- Tidy up README.
+## 3.0.0 - 2018-03-31
 
-## [2.1.0] - 2017-02-17 ##
-### Added ###
+### Added
+- Update for Craft 3.
+
+## 2.1.0 - 2017-02-17
+
+### Added
 - Add Travis CI configuration.
 - Add documentation URL.
 - Add schema version.
 - Add releases feed.
 
-### Changed ###
+### Changed
 - Reorganise plugin according to current best practices.
 - Use present tense in CHANGELOG.
 
-### Fixed ###
+### Fixed
 - Update parser to accept objects with a `__toString` method.
 
-## [2.0.1] - 2016-01-02 ##
-### Fixed ###
+## 2.0.1 - 2016-01-01
+
+### Fixed
 - Fix copying of README in build process.
 
-## [2.0.0] - 2016-01-01 ##
-### Added ###
-- Add change log.
-- Add unit tests for all "utility" classes.
-- Implement rudimentary build process.
+## 2.0.0 - 2015-12-31
 
-### Changed ###
-- Rename the plugin from SmartDown to Smartdown.
-- Rename `SmartDownService` to `SmartdownService` (breaking change).
-- Remove previously-deprecated `markdown` and `smartypants` Twig filter options.
-- Update `michelf/php-markdown` dependency to version 1.6.
-- Update `michelf/php-smartypants` dependency to version 1.6 (beta).
+### Added
+- Add CHANGELOG
+- Implement unit tests for 'utility' classes.
+- Implement build process.
 
-### Fixed ###
-- Fix [issue 2][issue-2] by updating SmartyPants dependency.
+### Changed
+- Rename plugin from SmartDown to Smartdown. Beware case-insensitive version control systems.
+- Rename 'SmartDownService' to 'SmartdownService'.
+- Remove deprecated 'markdown' and 'smartypants' Twig filter options.
+- Update MarkdownExtra to version 1.6.
+- Update SmartyPants to version 1.6 beta
 
-[issue-2]: https://github.com/monooso/smartdown.craft-plugin/issues/2
+### Fixed
+- Fix issue with SmartyPants dependency containing errant '.git' folder
 
-## [1.0.0] - 2015-07-30 ##
-### Added ###
-- Add `SmartDownService`, accessible via `craft()->smartDown`, so third-parties can share the love.
-- Add `modifySmartdownMarkupInput` hook.
-- Add `modifySmartdownMarkupOutput` hook.
-- Add `modifySmartdownTypographyInput` hook.
-- Add `modifySmartdownTypographyOutput` hook.
+## 1.0.0 - 2015-07-29
 
-### Changed ###
-- Deprecate `markdown` Twig filter option; use `markup` instead.
-- Deprecate `smartypants` Twig filter option; use `typography` instead.
+### Added
+- Add 'SmartDownService'.
+- Add 'modifySmartdownMarkupInput' hook.
+- Add 'modifySmartdownMarkupOutput' hook.
+- Add 'modifySmartdownTypographyInput' hook.
+- Add 'modifySmartdownTypographyOutput' hook.
 
-## 0.1.0 - 2013-08-21 ##
-Initial release.
+### Changed
+- Deprecate 'markdown' Twig filter option. Use 'markup' instead.
+- Deprecate 'smartypants' Twig filter option. Use 'typography' instead.
 
-### Added ###
-- Add `smartdown` Twig filter, which runs a string through "Markdown Extra" and "SmartyPants" parsers.
+## 0.1.0 - 2013-08-20
 
-[Unreleased]: https://github.com/monooso/smartdown.craft-plugin/compare/2.1.0...HEAD
-[2.1.0]: https://github.com/monooso/smartdown.craft-plugin/compare/2.1.0...2.0.1
-[2.0.1]: https://github.com/monooso/smartdown.craft-plugin/compare/2.0.0...2.0.1
-[2.0.0]: https://github.com/monooso/smartdown.craft-plugin/compare/1.0.0...2.0.0
-[1.0.0]: https://github.com/monooso/smartdown.craft-plugin/compare/0.1.0...1.0.0
+### Added
+- Add 'smartdown' Twig filter, which runs a string through MarkdownExtra and SmartyPants.

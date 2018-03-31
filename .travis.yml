@@ -1,13 +1,11 @@
 language: php
 php:
-  - '5.5'
-  - '5.6'
   - '7.0'
   - '7.1'
+  - '7.2'
   - hhvm
   - nightly
 install:
-  - composer install --prefer-dist -o -n -d src/smartdown
-  - composer install --prefer-dist -o -n -d src/tests
+  - composer install --prefer-dist -o -n
 script:
-  - ./src/tests/vendor/bin/phpunit --configuration ./src/tests/phpunit.xml
+  - ./vendor/bin/codecept run
