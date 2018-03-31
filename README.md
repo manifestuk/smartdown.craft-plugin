@@ -23,7 +23,21 @@ In theory, Smartdown _should_ be compatible with PHP 7.0. In practise, it's impo
 Unfortunately there's nothing we can do about that.
 
 ## Installation ##
-You can install Smartdown via the Craft plugin store.
+To install Smartdown, either search for "Smartdown" in the Craft Plugin Store, or add it as a [Composer][composer] dependency.
+
+[composer]: https://getcomposer.org "Composer is a PHP dependency manager"
+
+Here's how to install Smartdown using Composer.
+
+1. Open your terminal, and navigate to your Craft project:
+
+        cd /path/to/project
+
+2. Add Smartdown as a project dependency:
+
+        composer require experience/smartdown
+
+3. In the Control Panel, go to "Settings → Plugins", and click the "Install" button for Smartdown
 
 ## Basic usage ##
 Use the Smartdown filter in exactly the same way as any other Twig filter.
