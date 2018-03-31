@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "pluggage.craft-utility": "git+ssh://git@bitbucket.org/experience/plugin-packager.craft-utility.git#master"
-  }
-}
-

@@ -13,16 +13,31 @@ Craft already supports standard Markdown, but sadly standard Markdown doesn't su
 Smartdown plugs both of these gaps, turning your website into a typographic dreamboat.
 
 ## Requirements ##
-Each release of Smartdown is [automatically tested][travis] against PHP 5.5 and above. It is also manually tested on the most recent version of Craft.
+Each release of Smartdown is [automatically tested][travis] against PHP 7.1 and above. It's also manually tested on the most recent version of Craft.
 
 [travis]: https://travis-ci.org/experience/smartdown.craft-plugin "See the Smartdown build status on Travis CI"
 
-## Installation ##
-1. [Download the latest release][download], and unzip it.
-2. Copy the `smartdown` folder to your `craft/plugins` directory.
-3. Navigate to the "Admin &rarr; Settings &rarr; Plugins" page, and activate Smartdown.
+### PHP 7.0 support ###
+In theory, Smartdown _should_ be compatible with PHP 7.0. In practise, it's impossible to test this, because the Codeception dependency tree includes components which only work with PHP 7.1+.
 
-[download]: https://github.com/experience/smartdown.craft-plugin/releases/latest "Download the latest release"
+Unfortunately there's nothing we can do about that.
+
+## Installation ##
+To install Smartdown, either search for "Smartdown" in the Craft Plugin Store, or add it as a [Composer][composer] dependency.
+
+[composer]: https://getcomposer.org "Composer is a PHP dependency manager"
+
+Here's how to install Smartdown using Composer.
+
+1. Open your terminal, and navigate to your Craft project:
+
+        cd /path/to/project
+
+2. Add Smartdown as a project dependency:
+
+        composer require experience/smartdown
+
+3. In the Control Panel, go to "Settings → Plugins", and click the "Install" button for Smartdown
 
 ## Basic usage ##
 Use the Smartdown filter in exactly the same way as any other Twig filter.

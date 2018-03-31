@@ -1,4 +1,10 @@
-# System files
+# System
 .DS_Store
 /node_modules/
 /tmp/
+
+# Editor
+/tags
+
+# Package manager
+vendor/
