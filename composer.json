@@ -4,7 +4,9 @@
   "version": "3.0.0",
   "type": "craft-plugin",
   "minimum-stability": "dev",
+  "prefer-stable" : true,
   "require": {
+    "php": "^7.1.0",
     "michelf/php-markdown": "^1.8",
     "michelf/php-smartypants": "^1.8"
   },

@@ -13,9 +13,14 @@ Craft already supports standard Markdown, but sadly standard Markdown doesn't su
 Smartdown plugs both of these gaps, turning your website into a typographic dreamboat.
 
 ## Requirements ##
-Each release of Smartdown is [automatically tested][travis] against PHP 7.0 and above. It is also manually tested on the most recent version of Craft.
+Each release of Smartdown is [automatically tested][travis] against PHP 7.1 and above. It's also manually tested on the most recent version of Craft.
 
 [travis]: https://travis-ci.org/experience/smartdown.craft-plugin "See the Smartdown build status on Travis CI"
+
+### PHP 7.0 support ###
+In theory, Smartdown _should_ be compatible with PHP 7.0. In practise, it's impossible to test this, because the Codeception dependency tree includes components which only work with PHP 7.1+.
+
+Unfortunately there's nothing we can do about that.
 
 ## Installation ##
 You can install Smartdown via the Craft plugin store.
