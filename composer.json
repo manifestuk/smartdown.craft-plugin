@@ -1,8 +1,8 @@
 {
   "name": "experience/smartdown",
   "description": "Bringing the unbridled joy of Markdown Extra and Smartypants to your Craft websites.",
-  "version": "3.0.0",
   "type": "craft-plugin",
+  "version": "3.0.1",
   "keywords": [
     "craft",
     "cms",
