@@ -3,8 +3,6 @@
   "description": "Bringing the unbridled joy of Markdown Extra and Smartypants to your Craft websites.",
   "version": "3.0.0",
   "type": "craft-plugin",
-  "minimum-stability": "dev",
-  "prefer-stable" : true,
   "require": {
     "michelf/php-markdown": "^1.8",
     "michelf/php-smartypants": "^1.8"
