@@ -38,11 +38,7 @@
     "components": {
       "smartdown": "experience\\smartdown\\services\\Smartdown"
     },
-    "documentationUrl": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
     "class": "experience\\smartdown\\Smartdown",
-    "developer": "Experience",
-    "developerUrl": "https://experiencehq.net",
-    "downloadUrl": "https://github.com/experience/smartdown.craft-plugin/archive/master.zip",
     "handle": "smartdown",
     "hasCpSection": false,
     "hasSettings": false,
