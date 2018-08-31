@@ -3,6 +3,10 @@
   "description": "Bringing the unbridled joy of Markdown Extra and Smartypants to your Craft websites.",
   "version": "3.0.0",
   "type": "craft-plugin",
+  "support": {
+    "docs": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
+    "issues": "https://github.com/experience/smartdown.craft-plugin/issues"
+  },
   "require": {
     "michelf/php-markdown": "^1.8",
     "michelf/php-smartypants": "^1.8"
@@ -12,9 +16,6 @@
       "experience\\smartdown\\": "src/",
       "experience\\smartdown\\tests\\": "tests/"
     }
-  },
-  "support": {
-    "email": "stephen@experiencehq.net"
   },
   "extra": {
     "changelogUrl": "https://github.com/experience/smartdown.craft-plugin/blob/master/CHANGELOG.md",
