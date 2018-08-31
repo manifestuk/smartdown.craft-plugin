@@ -3,6 +3,15 @@
   "description": "Bringing the unbridled joy of Markdown Extra and Smartypants to your Craft websites.",
   "version": "3.0.0",
   "type": "craft-plugin",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "markdown",
+    "smartypants",
+    "typography"
+  ],
   "support": {
     "docs": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
     "issues": "https://github.com/experience/smartdown.craft-plugin/issues"
