@@ -16,6 +16,12 @@
     "docs": "https://github.com/experience/smartdown.craft-plugin/blob/master/README.md",
     "issues": "https://github.com/experience/smartdown.craft-plugin/issues"
   },
+  "authors": [
+    {
+      "name": "Experience",
+      "homepage": "https://experiencehq.net"
+    }
+  ],
   "require": {
     "michelf/php-markdown": "^1.8",
     "michelf/php-smartypants": "^1.8"
