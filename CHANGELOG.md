@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.0.1 - 2018-08-31
+
+### Added
+- Add license to `composer.json` (fixes [#7])
+
+[#7]: https://github.com/experience/smartdown.craft-plugin/issues/7
+
+### Changed
+- Remove PHP version requirement (fixes [#11])
+
+[#11]: https://github.com/experience/smartdown.craft-plugin/issues/11
+
 ## 3.0.0 - 2018-03-31
 
 ### Added
