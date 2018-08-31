@@ -23,6 +23,7 @@
     }
   ],
   "require": {
+    "craftcms/cms": "^3.0.0",
     "michelf/php-markdown": "^1.8",
     "michelf/php-smartypants": "^1.8"
   },
@@ -49,7 +50,6 @@
     "sourceLanguage": "en-GB"
   },
   "require-dev": {
-    "codeception/codeception": "dev-master",
-    "craftcms/cms": "^3.0.0-RC1"
+    "codeception/codeception": "dev-master"
   }
 }
