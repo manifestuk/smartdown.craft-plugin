@@ -25,7 +25,7 @@
   ],
   "require": {
     "craftcms/cms": "^3.0.0",
-    "michelf/php-markdown": "^1.8",
+    "michelf/php-markdown": "^1.9",
     "michelf/php-smartypants": "^1.8"
   },
   "autoload": {
